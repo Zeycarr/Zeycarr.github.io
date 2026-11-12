@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion de Turnos</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <div class="Cuadro-Logo">
+        <img src="logo-dragon.svg" class="Logo" alt="Logo Barberia">
+    </div>
+    <header class="Barra-Acciones">
+    <div class="barra-acciones">
+        <button id="btnAgendarTurno" class="boton boton-principal">Agendar</button>
+        <button id="btnVerTurnos" class="boton boton-secundario">Turnos del día</button>
+        <button id="btnInicio" class="boton boton-inicio">inicio</button>
+    </div>
+    </header>
+    <main class ="Principal">
+        <section id="seccionFormulario" class="tarjeta oculto">
+            <h2>Agenda tu Turno</h2>
+
+            <form id="FormularioTurno" novalidate>
+                <div class="campo">
+                    <label for="cliente">Nombre y Apellido:</label>
+                    <input type="text" id="cliente" placeholder="Tu Nombre" required>
+                </div>
+
+                <div class="campo">
+                    <label for="fechaHora">Fecha y hora</label>
+                    <input type="datetime-local" id="fechaHora" required>
+                </div>
+
+                <div class="campo">
+                    <label for="servicio">Servicio</label>
+                    <div class="fila-servicio">
+                        <select id="servicio" required>
+                            <option value="">-- Seleccioná un servicio --</option>
+                            <option value="Corte de pelo" data-precio="8000">Corte de pelo - $8.000</option>
+                            <option value="Barba" data-precio="5000">Barba - $5.000</option>
+                            <option value="Corte + Barba" data-precio="12000">Corte + Barba - $12.000</option>
+                            <option value="Perfilado" data-precio="3000">Perfilado - $3.000</option>
+                            <option value="Lavado y peinado" data-precio="2500">Lavado y peinado - $2.500</option>
+                        </select>
+                        <button type="button" id="btnCatalogo" class="boton boton-secundario boton-chico">Catalogo</button>
+                    </div>
+                </div>
+
+                <div id="catalogo" class="catalogo oculto">
+                    <table>
+                        <thead>
+                            <tr><th>Servicio</th><th>Precio</th></tr>
+                        </thead>
+                        <tbody id="cuerpoCatalogo"></tbody>
+                    </table>
+                </div>
+
+                <div class="campo">
+                    <label for="barbero">Barbero / Estilista</label>
+                    <select id="barbero" required>
+                        <option value="">-- Seleccioná un barbero --</option>
+                        <option value="Martín Gómez">Martín Gómez</option>
+                        <option value="Lucas Herrera">Lucas Herrera</option>
+                        <option value="Nicolás Vega">Nicolás Vega</option>
+                        <option value="Franco Ledesma">Franco Ledesma</option>
+                    </select>
+                </div>
+<p id="mensajeError" class="mensaje-error"></p>
+                <div class="botones-formulario">
+                    <button type="submit" class="boton boton-principal">Registrar</button>
+                    <button type="button" id="btnLimpiar" class="boton boton-peligro">Limpiar</button>
+                </div>
+            </form>
+        </section>
+
+        <section id="seccionTurnos" class="tarjeta oculto">
+            <div class="encabezado-reporte">
+                <h2>Turnos agendados del día</h2>
+                <p class="fecha-reporte">Fecha: <span id="fechaReporte"></span></p>
+            </div>
+
+            <div class="contenedor-tabla">
+                <table id="tablaTurnos">
+                    <thead>
+                        <tr>
+                            <th>Fecha y Hora</th>
+                            <th>Cliente</th>
+                            <th>Servicio</th>
+                            <th>Barbero Atendiendo</th>
+                            <th>Precio / Subtotal</th>
+                            <th class="no-imprimir">Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cuerpoTurnos"></tbody>
+                </table>
+            </div>
+
+            <p id="textoTotal" class="texto-total"></p>
+
+            <div class="botones-formulario no-imprimir">
+                <button id="btnImprimir" class="boton boton-principal">Imprimir</button>
+                <button id="btnCerrar" class="boton boton-peligro">Cerrar</button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="pie">
+        <p><strong>Alumno:</strong> [Nombre y Apellido del alumno]</p><p><strong>Curso y División:</strong> 6° "E" &nbsp;|&nbsp; <strong>Especialidad:</strong> Programación</p>
+        <p><strong>Profesor:</strong> Maximiliano Romero</p><p><strong>Escuela:</strong> IPET N° 247 Ing. Carlos A. Cassaffousth</p>
+    </footer>
+        <script src="scripts.js"></script>
+</body>
+</html>

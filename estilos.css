@@ -1,0 +1,271 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: content-box;
+}
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: #0d0f18;
+    background-image: url("Dragón sobre montañas nevadas.png");
+    background-size: 100% auto;
+    background-attachment: fixed;
+    background-position: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.Cuadro-Logo {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    z-index: 10;
+}
+.Cuadro-Logo::before {
+    content: "";
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #dfd7c5, #c0392b, #1f3c88);
+    filter: blur(14px);
+    opacity: 0.85;
+    z-index: -1;
+}
+.Logo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+    transition: transform 0.5s ease;
+}
+.Logo:hover {
+    transform: rotate(360deg) scale(1.08);
+}
+.Principal {
+    flex: 1;
+    width: 900px;
+    max-width: 92%;
+    margin: 0 auto;
+    padding-bottom: 40px;
+}
+.barra-acciones {
+    display: flex;
+    justify-content: left;
+    gap: 15px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+.tarjeta {
+    background: linear-gradient(145deg, rgba(116, 163, 216, 0.93), rgba(209, 127, 127, 0.93));
+    border: 1px solid #ebdec7;
+    border-radius: 16px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 10px 30px rgba(54, 26, 26, 0.7), inset 0 0 20px rgba(241, 196, 15, 0.05);
+    animation: aparecer 0.5s ease;
+}
+.tarjeta h2 {
+    color: #000000;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #ebdec7;
+    padding-bottom: 8px;
+}
+@keyframes aparecer {
+    from { opacity: 0; transform: translateY(-15px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+.oculto {
+    display: none;
+}
+
+.boton {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    color: #000000;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.5);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+}
+.boton:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 9px 18px rgba(0, 0, 0, 0.6);
+    filter: brightness(1.15);
+}
+.boton:active {
+    transform: translateY(1px) scale(0.98);
+}
+.boton-principal  { background: linear-gradient(135deg, #d1ccbe, #d1ccbe); }
+.boton-secundario { background: linear-gradient(135deg, #2c5aa0, #1b3566); }
+.boton-peligro    { background: linear-gradient(135deg, #c0392b, #7b1d14); }
+.boton-chico      { padding: 9px 16px; font-size: 0.9em; }
+
+.campo {
+    margin-bottom: 15px;
+}
+.campo label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+input, select {
+    width: 100%;
+    max-width: 800px;
+    padding: 10px 12px;
+    border: 2px solid #3e4985;
+    border-radius: 10px;
+    background: linear-gradient(#fdf8ee, #e8dcc0);
+    color: #2a1d12;
+    font-size: 1em;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.25);
+    transition: border-color 0.25s, box-shadow 0.25s;
+}
+input:focus, select:focus {
+    outline: none;
+    border-color: #b93930;
+    box-shadow: 0 0 10px rgba(241, 196, 15, 0.7);
+}
+.fila-servicio {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.fila-servicio select {
+    flex: 1;
+}
+.botones-formulario {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
+}
+th {
+    background: linear-gradient(#4f5682 ,#2c3e50);
+    padding: 12px;
+}
+td {
+    padding: 10px 12px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid rgba(241, 196, 15, 0.2);
+}
+tbody tr {
+    transition: background 0.2s, transform 0.2s;
+}
+tbody tr:hover td {
+    background: rgba(241, 196, 15, 0.18);
+}
+.catalogo {
+    margin-bottom: 15px;
+    animation: aparecer 0.4s ease;
+}
+.btn-quitar {
+    padding: 5px 12px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #c0392b, #7b1d14);
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.btn-quitar:hover {
+    transform: scale(1.12);
+}
+.fila-vacia td {
+    font-style: italic;
+    color: #bbb;
+}
+.texto-total {
+    margin-top: 18px;
+    text-align: center;
+    font-size: 1.25em;
+    font-weight: bold;
+    color: #f1c40f;
+}
+.fecha-reporte {
+    margin-bottom: 12px;
+    text-shadow: 1px 1px 2px #000;
+}
+.pie {
+    text-align: center;
+    padding: 8px 10px;
+    font-size: 0.85em;
+    line-height: 1;
+    background: linear-gradient(to bottom, #6a7fddbf, #506adbbf);
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.6);
+}
+@media (max-width: 700px) {
+    .encabezado { padding: 130px 15px 15px 15px; }
+    .encabezado h1 { font-size: 2.2em; }
+    .logo-contenedor { right: 50%; margin-right: -60px; }
+    .fila-servicio { flex-direction: column; align-items: stretch; }
+}
+@media print {
+    body {
+        background: #fff !important;
+        color: #000;
+    }
+
+    .logo-contenedor,
+    .encabezado,
+    .barra-acciones,
+    #seccionFormulario,
+    .pie,
+    .no-imprimir {
+        display: none !important;
+    }
+
+    .principal {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .tarjeta {
+        background: #fff !important;
+        border: none;
+        box-shadow: none;
+        animation: none;
+        color: #000;
+    }
+
+    .tarjeta h2, .texto-total, .fecha-reporte {
+        color: #000;
+        text-shadow: none;
+    }
+
+    table { box-shadow: none; }
+
+    th {
+        background: #ddd !important;
+        color: #000;
+        text-shadow: none;
+        border: 1px solid #000;
+    }
+
+    td {
+        background: #fff !important;
+        color: #000;
+        border: 1px solid #000;
+    }
+}
+.mensaje-error {
+    color: #ffffff;
+    font-weight: bold;
+    min-height: 1.2em;
+}
