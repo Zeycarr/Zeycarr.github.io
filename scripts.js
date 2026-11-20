@@ -74,23 +74,15 @@ function dibujarTurnos() {
 
     turnos.sort((a, b) => new Date(a.fechaHora) - new Date(b.fechaHora));
 
-    if (turnos.length === 0) {
-        const fila = document.createElement("tr");
-        fila.className = "fila-vacia";
-        const td = document.createElement("td");
-        td.colSpan = 6;
-        td.textContent = "Todavía no hay turnos registrados.";
-        fila.appendChild(td);
-        cuerpoTurnos.appendChild(fila);
-    }
-
     const hoy = fechaLocalISO(new Date());
-let total = 0;
-let turnosHoy = 0;
+    let total = 0;
+    let turnosHoy = 0;
 
-turnos.forEach((turno, indice) => {
-    if (turno.fechaHora.slice(0, 10) !== hoy) return;
-    }
+    turnos.forEach((turno, indice) => {
+        if (turno.fechaHora.slice(0, 10) !== hoy) return;
+
+        total += turno.precio;
+        turnosHoy++;
 
         const fila = document.createElement("tr");
         const datos = [
@@ -119,9 +111,19 @@ turnos.forEach((turno, indice) => {
         cuerpoTurnos.appendChild(fila);
     });
 
-    textoTotal.textContent = "Turnos de hoy: " + turnosHoy +
-    " | Monto total del día: " + formatearPrecio(total);
-  }
+    if (turnosHoy === 0) {
+        const fila = document.createElement("tr");
+        fila.className = "fila-vacia";
+        const td = document.createElement("td");
+        td.colSpan = 6;
+        td.textContent = "Todavía no hay turnos registrados para hoy.";
+        fila.appendChild(td);
+        cuerpoTurnos.appendChild(fila);
+    }
+
+    textoTotal.textContent = "Total de turnos del día: " + turnosHoy +
+        " | Monto total estimado a recaudar: " + formatearPrecio(total);
+}
 
 function guardar() {
     localStorage.setItem("turnosBarberia", JSON.stringify(turnos));
