@@ -89,9 +89,7 @@ let total = 0;
 let turnosHoy = 0;
 
 turnos.forEach((turno, indice) => {
-    if (turno.fechaHora.slice(0, 10) === hoy) {
-        total += turno.precio;
-        turnosHoy++;
+    if (turno.fechaHora.slice(0, 10) !== hoy) return;
     }
 
         const fila = document.createElement("tr");
